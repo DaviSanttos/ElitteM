@@ -1,0 +1,16 @@
+1-Empresa de planejamente de móveis.
+
+A empresa trabalha com planejamento de móveis para clientes. Temos a parte da produção
+aonde as peças são desenhadas e construidas.
+Há a parte do almocharifado aonde se guarda as peças, equipamentos entre outras coisas.
+
+
+2-Gerenciamento de almoxarifado.
+
+O gerenciamento atual consiste no trabalho manual em papel de quase todo o estoque.
+
+
+3-Solução.
+
+Criar um programa onde se organiza todo o estoque com categorias e itens de cada parte do almoxarifado. Solicitação
+de itens, confirmação das entregas e entrada e saida dentro do sistema.

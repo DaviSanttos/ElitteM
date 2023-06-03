@@ -1,0 +1,46 @@
+.campoPesquisa{
+    width: 25rem;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.campoTop{
+    display: flex;
+    width: 100%;
+    button{
+        height: 2rem;
+    }
+}
+
+h1{
+    color: rgba(0, 130, 198, 1);
+    // padding: 2rem 0rem 0rem 2rem;
+}
+
+th{
+    color: #F58634;
+    text-transform: uppercase;
+}
+
+td{
+    color: #232323;
+    font-weight: 600;
+}
+
+table{
+    --bs-table-striped-bg: #9D9D9D !important;
+}
+
+body{
+    background-color: rgb(202, 201, 201);
+}
+
+label{
+    color: #232323;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+a.links{
+    color: red !important;
+}
