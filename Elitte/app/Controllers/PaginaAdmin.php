@@ -124,11 +124,7 @@ class PaginaAdmin extends BaseController
             'preco' => $idm->preco
         ];
         $pedidoModel->insert($arr);
-        $pedido_id = $pedidoModel->getInsertID();
-        
-        // echo "<pre>";
-        // print_r($idm->preco);
-        // echo "<pre>";
+        $pedido_id = $pedidoModel->getInsertID();     
         
         $arr2 = [
             'fk_pedido' => $pedido_id,
@@ -138,5 +134,13 @@ class PaginaAdmin extends BaseController
 
         print_r($arr2);
         $pedido_materialModel->save($arr2);
+    }
+
+    public function removerItem($id,$cli){
+        $pedidoModel = new PedidoModel();
+
+        $pedidoModel->delete($id);
+
+        return redirect()->to(base_url("projeto/$cli"));
     }
 }

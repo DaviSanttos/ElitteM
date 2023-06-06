@@ -13,7 +13,7 @@ class PedidoModel extends Model
 
 
     public function getMateriais($id){
-        $query = $this->db->query("SELECT sum(p.qtd) 'qtd', p.preco, m.nome_material, nome_fornecedor, mc.nome_marca, nome_categoria from pedido p 
+        $query = $this->db->query("SELECT p.id_pedido, p.qtd , p.preco, m.nome_material, nome_fornecedor, mc.nome_marca, nome_categoria from pedido p 
         inner join materiais m 
         on p.fk_material = m.id_material 
         inner join fornecedores f 
@@ -21,7 +21,7 @@ class PedidoModel extends Model
         inner join marcas mc 
         on m.fk_marca = mc.id_marca
         inner join categorias c
-        on m.fk_categoria = c.id_categoria where p.fk_projeto = $id group by m.id_material ");
+        on m.fk_categoria = c.id_categoria where p.fk_projeto = $id");
 
         return $results = $query->getResultArray();
     }

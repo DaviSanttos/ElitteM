@@ -19,9 +19,6 @@
     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalentrada">
         Entrada
     </button>
-    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal1">
-        saida
-    </button>
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -86,33 +83,11 @@
         </div>
     </div>
 </div>
-<!-- modal para qtd -->
-<div class="modal fade" id="qtd" tabindex="-1" aria-labelledby="qtd" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Quantidade:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <!-- <button type="button" class="btn btn-secondary" data-bs-target="#modalentrada" data-bs-toggle="modal">Voltar</button> -->
-        <button type="button" class="btn btn-primary" data-bs-target="#modalentrada" data-bs-toggle="modal">OK</button>
-      </div>
-    </div>
-  </div>
-</div>
 
-<table class="table table-striped table-bordered mt-3 container">
+<table class="table table-striped table-bordered mt-3 container text-center">
     <thead class="table-dark">
         <tr>
+            <th>-</th>
             <th scope="col">Qtd.</th>
             <th scope="col">Materiais</th>
             <th scope="col">Preço</th>
@@ -124,7 +99,13 @@
     <tbody>
         <?php foreach($materiais_pedido as $material) : ?>
         <tr>
-            <th scope="row"><?= $material["qtd"]; ?></th>
+            <td><a href="/remover/<?= $material["id_pedido"] ?>/<?= $cliente["id_cliente"]?>"><button type="button" class="btn btn-danger">
+                <i class="bi bi-trash"></i>
+            </button></a>
+            <button type="button" class="btn btn-danger" id="btnSaida">
+            <i class="bi bi-dash-lg"></i>
+            </button></td>
+            <th scope="row" id="qtd"><?= $material["qtd"]; ?></th>
             <td><?= $material["nome_material"]; ?></td>
             <td><?= $material["preco"]; ?></td>
             <td><?= $material["nome_fornecedor"]; ?></td>
@@ -143,18 +124,16 @@
     const preco = document.getElementById("preco");
     const selecao = document.getElementById("selecao");
     const lista = document.getElementById("lista");
+    const btnSair = document.getElementById("btnSaida");
+    let qtd = document.getElementById("qtd");
 
-    async function pegarDados(filtro){
-    let requisicao = await fetch("http://localhost:8080/projeto/buscar/"+filtro);
-        // let dados = await requisicao.json();
-        // let arr = JSON.parse(dados)
+    console.log(btnSair);
+    console.log(qtd.innerHTML);
 
-        console.log(requisicao);
-        // const preco = document.getElementById("preco");
-
-        // campo.value = dados.campo;
-        // preco.value = dados.preco;
-    }
+    // btnSair.addEventListener("click", () => {
+    //     console.log(qtd.innerHTML);
+    //     console.log("oi");
+    // })
 
     selecao.addEventListener("change", async () => {;
         let produtoId = selecao.value;
