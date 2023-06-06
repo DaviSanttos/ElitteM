@@ -144,8 +144,15 @@ class PaginaAdmin extends BaseController
         return redirect()->to(base_url("projeto/$cli"));
     }
 
-    public function subtrairItem($id,$qtd){
-        echo $id;
-        echo $qtd;
+    public function subtrairItem($id,$qtd,$cli){
+    $pedidoModel = new PedidoModel();
+    $arrAtualizado = [
+        'id_pedido' => $id,
+        'qtd' => $qtd
+    ];
+
+    $pedidoModel->save($arrAtualizado);
+    
+        return redirect()->to(base_url("projeto/$cli"));
     }
-}
+    }

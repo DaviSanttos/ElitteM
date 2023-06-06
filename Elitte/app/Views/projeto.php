@@ -7,6 +7,12 @@
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"
 />
+
+<style>
+    #saida{
+        
+    }
+</style>
 <h6 class="mr-auto" id="h1Projeto">PROJETO:
     <?= $cliente["nome_cliente"] ?>
 </h6>
@@ -59,7 +65,7 @@
                     <label for="fkmarca" class="form-label">Materiais</label>
                     <select name="selecao" id="selecao" class="form-select">
                         <?php foreach ($materiais as $material) : ?>
-                            <option value="<?= $material["id_material"] ?>" selected>
+                            <option value="<?= $material["id_material"] ?>">
                                 <?= $material["nome_material"] ?>
                             </option>
                         <?php endforeach; ?>
@@ -101,11 +107,8 @@
         <tr>
             <td><a href="/remover/<?= $material["id_pedido"] ?>/<?= $cliente["id_cliente"]?>"><button type="button" class="btn btn-danger">
                 <i class="bi bi-trash"></i>
-            </button></a>
-            <button type="button" class="btn btn-danger" onclick="subtrair(<?= $material["id_pedido"] ?>)">
-            <i class="bi bi-dash-lg"></i>
-            </button></td>
-            <th scope="row" id="qtd"><?= $material["qtd"]; ?></th>
+            </button></a></td>
+            <th scope="row" class="col-md-2"><input id="saida" class="form-control text-center" type="number" min="0" value="<?= $material["qtd"]; ?>" onkeypress="submit(event,<?= $material["id_pedido"] ?>,<?= $material["qtd"]; ?>)"></th>
             <td><?= $material["nome_material"]; ?></td>
             <td><?= $material["preco"]; ?></td>
             <td><?= $material["nome_fornecedor"]; ?></td>
@@ -124,28 +127,40 @@
     const preco = document.getElementById("preco");
     const selecao = document.getElementById("selecao");
     const lista = document.getElementById("lista");
-    const qtd = document.getElementById("qtd");
+    const saida = document.getElementById("saida");
+    const clienteId = <?= json_encode($cliente["id_cliente"]) ?>;
 
-    console.log(qtd.innerHTML);
+    // console.log(qtd.innerHTML);
 
     // function subtrair(p){
     //     console.log(pId);
     //     await fetch(`http://localhost:8080/subtrair/${pId}/${produtoQttd}`);
     // }
-
+    
     selecao.addEventListener("change", async () => {;
         let produtoId = selecao.value;
         let produtoQttd = preco.value;
-        let clienteId = <?= json_encode($cliente["id_cliente"]) ?>;
 
+        
         await fetch(`http://localhost:8080/salvar/${produtoId}/${produtoQttd}/${clienteId}`);
-
+        
         lista.innerHTML += `<tr>
-                                <th scope="row">${preco.value}</th>
-                                <td>${selecao.innerHTML}</td>
-                            </tr>`
+        <th scope="row">${preco.value}</th>
+        <td>${selecao.innerHTML}</td>
+        </tr>`
     });
 
+    async function submit(event,idPedido,qtd) {
+
+        if(event.key == "Enter"){
+            console.log(idPedido);
+            console.log(saida.value);
+            console.log(qtd);
+            console.log(clienteId);
+            await fetch(`http://localhost:8080/subtrair/${idPedido}/${qtd}/${clienteId}`);
+        }
+    }
+    
     const selectMarca = new Choices(selecao,{
         noResultsText: 'Nenhuma marca encontrada',
         noChoicesText: 'Nao existe marcas',
