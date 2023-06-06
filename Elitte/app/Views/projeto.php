@@ -102,7 +102,7 @@
             <td><a href="/remover/<?= $material["id_pedido"] ?>/<?= $cliente["id_cliente"]?>"><button type="button" class="btn btn-danger">
                 <i class="bi bi-trash"></i>
             </button></a>
-            <button type="button" class="btn btn-danger" id="btnSaida">
+            <button type="button" class="btn btn-danger" onclick="subtrair(<?= $material["id_pedido"] ?>)">
             <i class="bi bi-dash-lg"></i>
             </button></td>
             <th scope="row" id="qtd"><?= $material["qtd"]; ?></th>
@@ -124,16 +124,14 @@
     const preco = document.getElementById("preco");
     const selecao = document.getElementById("selecao");
     const lista = document.getElementById("lista");
-    const btnSair = document.getElementById("btnSaida");
-    let qtd = document.getElementById("qtd");
+    const qtd = document.getElementById("qtd");
 
-    console.log(btnSair);
     console.log(qtd.innerHTML);
 
-    // btnSair.addEventListener("click", () => {
-    //     console.log(qtd.innerHTML);
-    //     console.log("oi");
-    // })
+    // function subtrair(p){
+    //     console.log(pId);
+    //     await fetch(`http://localhost:8080/subtrair/${pId}/${produtoQttd}`);
+    // }
 
     selecao.addEventListener("change", async () => {;
         let produtoId = selecao.value;

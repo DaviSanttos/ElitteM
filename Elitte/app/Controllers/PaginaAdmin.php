@@ -143,4 +143,9 @@ class PaginaAdmin extends BaseController
 
         return redirect()->to(base_url("projeto/$cli"));
     }
+
+    public function subtrairItem($id,$qtd){
+        echo $id;
+        echo $qtd;
+    }
 }
