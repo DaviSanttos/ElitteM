@@ -84,7 +84,7 @@ CREATE TABLE log(
 -- for each row
 -- begin
 -- 	insert into log (qtd, preco)
---     values (concat(old.qtd,old.preco);
+--     values (concat(old.qtd,old.preco));
 -- end$
 -- delimiter ;
 
