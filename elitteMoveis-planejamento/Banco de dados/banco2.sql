@@ -51,7 +51,9 @@ CREATE TABLE pedido(
     fk_material INT,
     fk_projeto INT,
     preco INT,
-    FOREIGN KEY(fk_projeto) REFERENCES projetos(id_projeto)
+    fk_usuario INT,
+    FOREIGN KEY(fk_projeto) REFERENCES projetos(id_projeto),
+    FOREIGN KEY(fk_usuario) REFERENCES usuario(id_usuario)
 );
 
 CREATE TABLE pedido_material(
@@ -67,13 +69,13 @@ CREATE TABLE cliente(
     id_cliente INT PRIMARY KEY AUTO_INCREMENT,
     nome_cliente VARCHAR(50)
 );
+
 CREATE TABLE log(
-    id int NOT NULL AUTO_INCREMENT,
-    qtd int,
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    qtd INT,
     datalog timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-    preco int,
-    usuario varchar(30),
-    PRIMARY KEY (id)
+    preco INT,
+    id_usuario INT
 );
 
     insert into usuario(nome_usuario, senha, nivel) values("user", "$2y$10$.wADUyVVO12LTvy789/GoObncLjcH8LJFs1Kb6KyLwMjuIPYxkMJK", 0);
