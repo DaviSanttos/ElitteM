@@ -78,15 +78,15 @@ CREATE TABLE log(
 );
 
 
--- delimiter $
--- create trigger trg_cadped
--- after delete on pedido
--- for each row
--- begin
--- 	insert into log (qtd, preco)
---     values (concat(old.qtd,old.preco));
--- end$
--- delimiter ;
+delimiter $
+create trigger trg_cadped
+after delete on pedido
+for each row
+begin
+	insert into log (qtd, preco)
+    values (old.qtd,old.preco);
+end$
+delimiter ;
 
 insert into usuario(nome_usuario, senha, nivel) values("user", "$2y$10$.wADUyVVO12LTvy789/GoObncLjcH8LJFs1Kb6KyLwMjuIPYxkMJK", 0);
 insert into usuario(nome_usuario, senha, nivel) values("adm", "$2y$10$.wADUyVVO12LTvy789/GoObncLjcH8LJFs1Kb6KyLwMjuIPYxkMJK", 1);
