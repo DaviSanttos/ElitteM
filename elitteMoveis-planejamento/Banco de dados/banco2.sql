@@ -52,7 +52,7 @@ CREATE TABLE pedido(
     fk_projeto INT,
     preco INT,
     fk_usuario INT,
-    FOREIGN KEY(fk_projeto) REFERENCES projetos(id_projeto),
+    FOREIGN KEY(fk_projeto) REFERENCES cliente(id_cliente),
     FOREIGN KEY(fk_usuario) REFERENCES usuario(id_usuario)
 );
 
@@ -70,11 +70,19 @@ CREATE TABLE cliente(
     nome_cliente VARCHAR(50)
 );
 
-CREATE TABLE log(
+CREATE TABLE logg(
     id INT PRIMARY KEY AUTO_INCREMENT,
     qtd INT,
     preco INT,
-    datalog timestamp NULL DEFAULT CURRENT_TIMESTAMP
+    fk_pedido INT,
+    fk_material INT,
+    fk_projeto INT,
+    fk_usuario INT,
+    datalog timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (fk_pedido) REFERENCES pedido(id_pedido),
+    FOREIGN KEY (fk_material) REFERENCES material(id_material),
+    FOREIGN KEY (fk_projeto) REFERENCES cliente(id_cliente),
+    FOREIGN KEY (fk_usuario) REFERENCES usuario(id_usuario)
 );
 
 
@@ -83,11 +91,12 @@ create trigger trg_cadped
 after delete on pedido
 for each row
 begin
-	insert into log (qtd, preco)
-    values (old.qtd,old.preco);
+	insert into logg (qtd, preco, fk_pedido,fk_material,fk_projeto,fk_usuario)
+    values (old.qtd,old.preco,old.id_pedido,old.fk_material,old.fk_projeto,old.fk_usuario);
 end$
 delimiter ;
 
 insert into usuario(nome_usuario, senha, nivel) values("user", "$2y$10$.wADUyVVO12LTvy789/GoObncLjcH8LJFs1Kb6KyLwMjuIPYxkMJK", 0);
 insert into usuario(nome_usuario, senha, nivel) values("adm", "$2y$10$.wADUyVVO12LTvy789/GoObncLjcH8LJFs1Kb6KyLwMjuIPYxkMJK", 1);
 
+-- DROP TRIGGER trg_cadped;

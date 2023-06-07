@@ -17,6 +17,12 @@ class PaginaAdmin extends BaseController
     }
     public function controle()
     {
+        $pedidoModel = new PedidoModel;
+        $dados['materiaisS'] = $pedidoModel->getSaida();
+        echo "<pre>";
+        print_r($dados);
+        echo "<pre>";
+        exit;
         return view('controle');
     }
     public function materiais()
@@ -116,12 +122,13 @@ class PaginaAdmin extends BaseController
         $pedidoModel = new PedidoModel();
         $pedido_materialModel = new PedidoMaterialModel();
         $idm = $materialModel->getPreco($fk);
-
+        $id_usuario =  session()->get('id_usuario');
         $arr = [
             'qtd' => $qtd,
             'fk_material' => $fk,
             'fk_projeto' => $cli,
-            'preco' => $idm->preco
+            'preco' => $idm->preco,
+            'fk_usuario' => $id_usuario
         ];
         $pedidoModel->insert($arr);
         $pedido_id = $pedidoModel->getInsertID();     
