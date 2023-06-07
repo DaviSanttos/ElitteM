@@ -67,6 +67,14 @@ CREATE TABLE cliente(
     id_cliente INT PRIMARY KEY AUTO_INCREMENT,
     nome_cliente VARCHAR(50)
 );
+CREATE TABLE log(
+    id int NOT NULL AUTO_INCREMENT,
+    qtd int,
+    datalog timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+    preco int,
+    usuario varchar(30),
+    PRIMARY KEY (id)
+);
 
     insert into usuario(nome_usuario, senha, nivel) values("user", "$2y$10$.wADUyVVO12LTvy789/GoObncLjcH8LJFs1Kb6KyLwMjuIPYxkMJK", 0);
     insert into usuario(nome_usuario, senha, nivel) values("adm", "$2y$10$.wADUyVVO12LTvy789/GoObncLjcH8LJFs1Kb6KyLwMjuIPYxkMJK", 1);

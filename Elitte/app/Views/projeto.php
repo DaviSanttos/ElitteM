@@ -108,7 +108,7 @@
             <td><a href="/remover/<?= $material["id_pedido"] ?>/<?= $cliente["id_cliente"]?>"><button type="button" class="btn btn-danger">
                 <i class="bi bi-trash"></i>
             </button></a></td>
-            <th scope="row" class="col-md-2"><input id="saida" class="form-control text-center" type="number" min="0" value="<?= $material["qtd"]; ?>" onkeypress="submit(event,<?= $material["id_pedido"] ?>,<?= $material["qtd"]; ?>)"></th>
+            <th scope="row" class="col-md-1"><input id="<?= 'pedido' . $material['id_pedido'] ?>" class="form-control text-center" type="number" min="0" value="<?= $material["qtd"]; ?>" onkeypress="submit(event,<?= $material["id_pedido"] ?>)"></th>
             <td><?= $material["nome_material"]; ?></td>
             <td><?= $material["preco"]; ?></td>
             <td><?= $material["nome_fornecedor"]; ?></td>
@@ -141,7 +141,6 @@
         let produtoId = selecao.value;
         let produtoQttd = preco.value;
 
-        
         await fetch(`http://localhost:8080/salvar/${produtoId}/${produtoQttd}/${clienteId}`);
         
         lista.innerHTML += `<tr>
@@ -150,14 +149,10 @@
         </tr>`
     });
 
-    async function submit(event,idPedido,qtd) {
-
+    async function submit(event,idPedido) {
+        const saida = document.getElementById(`pedido${idPedido}`);
         if(event.key == "Enter"){
-            console.log(idPedido);
-            console.log(saida.value);
-            console.log(qtd);
-            console.log(clienteId);
-            await fetch(`http://localhost:8080/subtrair/${idPedido}/${qtd}/${clienteId}`);
+            await fetch(`http://localhost:8080/subtrair/${idPedido}/${saida.value}/${clienteId}`);
         }
     }
     

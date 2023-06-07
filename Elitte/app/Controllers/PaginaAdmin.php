@@ -146,6 +146,11 @@ class PaginaAdmin extends BaseController
 
     public function subtrairItem($id,$qtd,$cli){
     $pedidoModel = new PedidoModel();
+
+    if($qtd == '0'){
+        $pedidoModel->delete($id);
+    }
+
     $arrAtualizado = [
         'id_pedido' => $id,
         'qtd' => $qtd
@@ -153,6 +158,7 @@ class PaginaAdmin extends BaseController
 
     $pedidoModel->save($arrAtualizado);
     
-        return redirect()->to(base_url("projeto/$cli"));
+    return redirect()->to(base_url("projeto/$cli"));
     }
-    }
+
+}
