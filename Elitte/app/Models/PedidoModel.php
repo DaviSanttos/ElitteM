@@ -27,7 +27,7 @@ class PedidoModel extends Model
     }
 
     public function getSaida(){
-        $query = $this->db->query("SELECT l.qtd, l.preco,cli.nome_cliente, m.nome_material,f.nome_fornecedor, mc.nome_marca, c.nome_categoria, l.datalog, us.nivel from logg l
+        $query = $this->db->query("SELECT l.qtd, l.preco,cli.nome_cliente, m.nome_material,f.nome_fornecedor, mc.nome_marca, c.nome_categoria, date_format(l.datalog, '%d/%m/%Y') as dataS, us.nivel, l.fk_usuario from logg l
         inner join materiais m 
         on l.fk_material = m.id_material
         inner join fornecedores f 

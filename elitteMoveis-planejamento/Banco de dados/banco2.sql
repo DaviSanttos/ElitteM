@@ -86,25 +86,25 @@ CREATE TABLE logg(
 );
 
 
-delimiter $
-create trigger trg_cadped
-after delete on pedido
-for each row
-begin
-	insert into logg (qtd, preco, fk_pedido,fk_material,fk_projeto,fk_usuario)
-    values (old.qtd,old.preco,old.id_pedido,old.fk_material,old.fk_projeto,old.fk_usuario);
-end$
-delimiter ;
+-- delimiter $
+-- create trigger trg_cadped
+-- after delete on pedido
+-- for each row
+-- begin
+-- 	insert into logg (qtd, preco, fk_pedido,fk_material,fk_projeto,fk_usuario)
+--     values (old.qtd,old.preco,old.id_pedido,old.fk_material,old.fk_projeto,old.fk_usuario);
+-- end$
+-- delimiter ;
 
-delimiter $
-create trigger trg_insped
-after update on pedido
-for each row
-begin
-	insert into logg (qtd, preco, fk_pedido,fk_material,fk_projeto,fk_usuario)
-    values (old.qtd - new.qtd,new.preco,new.id_pedido,new.fk_material,new.fk_projeto,new.fk_usuario);
-end$
-delimiter ;
+-- delimiter $
+-- create trigger trg_insped
+-- after update on pedido
+-- for each row
+-- begin
+-- 	insert into logg (qtd, preco, fk_pedido,fk_material,fk_projeto,fk_usuario)
+--     values (old.qtd - new.qtd,new.preco,new.id_pedido,new.fk_material,new.fk_projeto,new.fk_usuario);
+-- end$
+-- delimiter ;
 
 insert into usuario(nome_usuario, senha, nivel) values("user", "$2y$10$.wADUyVVO12LTvy789/GoObncLjcH8LJFs1Kb6KyLwMjuIPYxkMJK", 0);
 insert into usuario(nome_usuario, senha, nivel) values("adm", "$2y$10$.wADUyVVO12LTvy789/GoObncLjcH8LJFs1Kb6KyLwMjuIPYxkMJK", 1);

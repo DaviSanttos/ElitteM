@@ -27,196 +27,25 @@
         </tr>
     </thead>
     <tbody>
+        <?php foreach($materiaisS as $material) : ?>
         <tr>
             <th scope="row">10</th>
-            <td>FITA BORDA CARVALHO BATUR 64MM 20M</td>
-            <td>0,00</td>
-            <td>Maria Luiza</td>
-            <td>Gmad</td>
-            <td>Rehau</td>
-            <td>Acabamentos</td>
-            <td>21/10/2023</td>
+            <td><?= $material["nome_material"]?></td>
+            <td><?= $material["qtd"]?></td>
+            <td><?= $material["nome_cliente"]?></td>
+            <td><?= $material["nome_fornecedor"]?></td>
+            <td><?= $material["nome_marca"]?></td>
+            <td><?= $material["nome_categoria"]?></td>
+            <td class="d-flex justify-content-around"><?= $material["dataS"]?>
+            <?= session()->get("id_usuario"); ?>
+            <?php if($material["nivel"] == 1 && $material["fk_usuario"] == session()->get("id_usuario")) : ?>
+                <button type="button" class="btn btn-success"><i class="bi bi-person-workspace"></i></button>
+            <?php else : ?>
+                <button type="button" class="btn btn-warning"><i class="bi bi-person"></i></button>
+            <?php endif ; ?>
+        </td>
         </tr>
-        <tr>
-            <th scope="row">10</th>
-            <td>FITA BORDA CARVALHO BATUR 64MM 20M</td>
-            <td>0,00</td>
-            <td>Maria Luiza</td>
-            <td>Gmad</td>
-            <td>Rehau</td>
-            <td>Acabamentos</td>
-            <td>21/10/2023</td>
-        </tr>
-        <tr>
-            <th scope="row">10</th>
-            <td>FITA BORDA CARVALHO BATUR 64MM 20M</td>
-            <td>0,00</td>
-            <td>Maria Luiza</td>
-            <td>Gmad</td>
-            <td>Rehau</td>
-            <td>Acabamentos</td>
-            <td>21/10/2023</td>
-        </tr>
-        <tr>
-            <th scope="row">10</th>
-            <td>FITA BORDA CARVALHO BATUR 64MM 20M</td>
-            <td>0,00</td>
-            <td>Maria Luiza</td>
-            <td>Gmad</td>
-            <td>Rehau</td>
-            <td>Acabamentos</td>
-            <td>21/10/2023</td>
-        </tr>
-        <tr>
-            <th scope="row">10</th>
-            <td>FITA BORDA CARVALHO BATUR 64MM 20M</td>
-            <td>0,00</td>
-            <td>Maria Luiza</td>
-            <td>Gmad</td>
-            <td>Rehau</td>
-            <td>Acabamentos</td>
-            <td>21/10/2023</td>
-        </tr>
-        <tr>
-            <th scope="row">10</th>
-            <td>FITA BORDA CARVALHO BATUR 64MM 20M</td>
-            <td>0,00</td>
-            <td>Maria Luiza</td>
-            <td>Gmad</td>
-            <td>Rehau</td>
-            <td>Acabamentos</td>
-            <td>21/10/2023</td>
-        </tr>
-        <tr>
-            <th scope="row">10</th>
-            <td>FITA BORDA CARVALHO BATUR 64MM 20M</td>
-            <td>0,00</td>
-            <td>Maria Luiza</td>
-            <td>Gmad</td>
-            <td>Rehau</td>
-            <td>Acabamentos</td>
-            <td>21/10/2023</td>
-        </tr>
-        <tr>
-            <th scope="row">10</th>
-            <td>FITA BORDA CARVALHO BATUR 64MM 20M</td>
-            <td>0,00</td>
-            <td>Maria Luiza</td>
-            <td>Gmad</td>
-            <td>Rehau</td>
-            <td>Acabamentos</td>
-            <td>21/10/2023</td>
-        </tr>
-        <tr>
-            <th scope="row">10</th>
-            <td>FITA BORDA CARVALHO BATUR 64MM 20M</td>
-            <td>0,00</td>
-            <td>Maria Luiza</td>
-            <td>Gmad</td>
-            <td>Rehau</td>
-            <td>Acabamentos</td>
-            <td>21/10/2023</td>
-        </tr>
-        <tr>
-            <th scope="row">10</th>
-            <td>FITA BORDA CARVALHO BATUR 64MM 20M</td>
-            <td>0,00</td>
-            <td>Maria Luiza</td>
-            <td>Gmad</td>
-            <td>Rehau</td>
-            <td>Acabamentos</td>
-            <td>21/10/2023</td>
-        </tr>
-        <tr>
-            <th scope="row">10</th>
-            <td>FITA BORDA CARVALHO BATUR 64MM 20M</td>
-            <td>0,00</td>
-            <td>Maria Luiza</td>
-            <td>Gmad</td>
-            <td>Rehau</td>
-            <td>Acabamentos</td>
-            <td>21/10/2023</td>
-        </tr>
-        <tr>
-            <th scope="row">10</th>
-            <td>FITA BORDA CARVALHO BATUR 64MM 20M</td>
-            <td>0,00</td>
-            <td>Maria Luiza</td>
-            <td>Gmad</td>
-            <td>Rehau</td>
-            <td>Acabamentos</td>
-            <td>21/10/2023</td>
-        </tr>
-        <tr>
-            <th scope="row">10</th>
-            <td>FITA BORDA CARVALHO BATUR 64MM 20M</td>
-            <td>0,00</td>
-            <td>Maria Luiza</td>
-            <td>Gmad</td>
-            <td>Rehau</td>
-            <td>Acabamentos</td>
-            <td>21/10/2023</td>
-        </tr>
-        <tr>
-            <th scope="row">10</th>
-            <td>FITA BORDA CARVALHO BATUR 64MM 20M</td>
-            <td>0,00</td>
-            <td>Maria Luiza</td>
-            <td>Gmad</td>
-            <td>Rehau</td>
-            <td>Acabamentos</td>
-            <td>21/10/2023</td>
-        </tr>
-        <tr>
-            <th scope="row">10</th>
-            <td>FITA BORDA CARVALHO BATUR 64MM 20M</td>
-            <td>0,00</td>
-            <td>Maria Luiza</td>
-            <td>Gmad</td>
-            <td>Rehau</td>
-            <td>Acabamentos</td>
-            <td>21/10/2023</td>
-        </tr>
-        <tr>
-            <th scope="row">10</th>
-            <td>FITA BORDA CARVALHO BATUR 64MM 20M</td>
-            <td>0,00</td>
-            <td>Maria Luiza</td>
-            <td>Gmad</td>
-            <td>Rehau</td>
-            <td>Acabamentos</td>
-            <td>21/10/2023</td>
-        </tr>
-        <tr>
-            <th scope="row">10</th>
-            <td>FITA BORDA CARVALHO BATUR 64MM 20M</td>
-            <td>0,00</td>
-            <td>Maria Luiza</td>
-            <td>Gmad</td>
-            <td>Rehau</td>
-            <td>Acabamentos</td>
-            <td>21/10/2023</td>
-        </tr>
-        <tr>
-            <th scope="row">10</th>
-            <td>FITA BORDA CARVALHO BATUR 64MM 20M</td>
-            <td>0,00</td>
-            <td>Maria Luiza</td>
-            <td>Gmad</td>
-            <td>Rehau</td>
-            <td>Acabamentos</td>
-            <td>21/10/2023</td>
-        </tr>
-        <tr>
-            <th scope="row">10</th>
-            <td>FITA BORDA CARVALHO BATUR 64MM 20M</td>
-            <td>0,00</td>
-            <td>Maria Luiza</td>
-            <td>Gmad</td>
-            <td>Rehau</td>
-            <td>Acabamentos</td>
-            <td>21/10/2023</td>
-        </tr>
+        <?php endforeach; ?>
     </tbody>
 </table>
 <?php $this->endSection() ?>

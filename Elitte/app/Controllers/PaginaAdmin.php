@@ -19,11 +19,11 @@ class PaginaAdmin extends BaseController
     {
         $pedidoModel = new PedidoModel;
         $dados['materiaisS'] = $pedidoModel->getSaida();
-        echo "<pre>";
-        print_r($dados);
-        echo "<pre>";
-        exit;
-        return view('controle');
+        // echo "<pre>";
+        // print_r($dados);
+        // echo "<pre>";
+        // exit;
+        return view('controle',$dados);
     }
     public function materiais()
     {
@@ -43,7 +43,6 @@ class PaginaAdmin extends BaseController
         $dados['cliente'] = $projetoModel->find($id);
         $dados["materiais"] = $materialModel->findAll();
         $dados['materiais_pedido'] = $pedidoModel->getMateriais($id);
-        // print_r($dados['materiais_pedido']);
         return view('projeto',$dados);
     }
     public function graficos()
@@ -122,7 +121,7 @@ class PaginaAdmin extends BaseController
         $pedidoModel = new PedidoModel();
         $pedido_materialModel = new PedidoMaterialModel();
         $idm = $materialModel->getPreco($fk);
-        $id_usuario =  session()->get('id_usuario');
+        // $id_usuario =  session()->get('id_usuario');
         $arr = [
             'qtd' => $qtd,
             'fk_material' => $fk,
