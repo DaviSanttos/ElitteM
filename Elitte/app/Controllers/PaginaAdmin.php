@@ -7,6 +7,7 @@ use App\Models\MaterialModel;
 use App\Models\ProjetoModel;
 use App\Models\PedidoModel;
 use App\Models\PedidoMaterialModel;
+use App\Models\LoggModel;
 
 
 class PaginaAdmin extends BaseController
@@ -43,12 +44,6 @@ class PaginaAdmin extends BaseController
         $dados['cliente'] = $projetoModel->find($id);
         $dados["materiais"] = $materialModel->findAll();
         $dados['materiais_pedido'] = $pedidoModel->getMateriais($id);
-<<<<<<< HEAD
-
-        $pedidoModel->updatTotal(20);
-        // print_r($dados['materiais_pedido']);
-=======
->>>>>>> 99a780ee9a876bb0d0f4b50a792f478632ef145a
         return view('projeto',$dados);
     }
     public function graficos()
@@ -132,8 +127,7 @@ class PaginaAdmin extends BaseController
             'qtd' => $qtd,
             'fk_material' => $fk,
             'fk_projeto' => $cli,
-            'preco' => $idm->preco,
-            'fk_usuario' => $id_usuario
+            'preco' => $idm->preco
         ];
         $pedidoModel->insert($arr);
         $pedido_id = $pedidoModel->getInsertID();     
@@ -150,6 +144,20 @@ class PaginaAdmin extends BaseController
 
     public function removerItem($id,$cli){
         $pedidoModel = new PedidoModel();
+        $id_usuario =  session()->get('id_usuario');
+        $pedido = $pedidoModel->find($id);
+
+        $arrInLog = [
+            'qtd' => $pedido["qtd"],
+            'preco' => $pedido["preco"],
+            'fk_pedido' => $pedido["id_pedido"],
+            'fk_material' => $pedido["fk_material"],
+            'fk_projeto' => $pedido["fk_projeto"],
+            'fk_usuario' => $id_usuario
+        ];
+
+        $loggModel = new LoggModel();
+        $loggModel->save($arrInLog);
 
         $pedidoModel->delete($id);
 
@@ -158,8 +166,35 @@ class PaginaAdmin extends BaseController
 
     public function subtrairItem($id,$qtd,$cli){
     $pedidoModel = new PedidoModel();
+    $loggModel = new LoggModel();
 
+    $id_usuario =  session()->get('id_usuario');
+
+    $pedido = $pedidoModel->find($id);
+
+    $arrInLog = [
+        'qtd' => $pedido["qtd"] - $qtd,
+        'preco' => $pedido["preco"],
+        'fk_pedido' => $pedido["id_pedido"],
+        'fk_material' => $pedido["fk_material"],
+        'fk_projeto' => $pedido["fk_projeto"],
+        'fk_usuario' => $id_usuario
+    ];
+
+        $loggModel->save($arrInLog);
+        
     if($qtd == '0'){
+        $arrInLog = [
+            'qtd' => $pedido["qtd"],
+            'preco' => $pedido["preco"],
+            'fk_pedido' => $pedido["id_pedido"],
+            'fk_material' => $pedido["fk_material"],
+            'fk_projeto' => $pedido["fk_projeto"],
+            'fk_usuario' => $id_usuario
+        ];
+
+        $loggModel->save($arrInLog);
+
         $pedidoModel->delete($id);
     }
 

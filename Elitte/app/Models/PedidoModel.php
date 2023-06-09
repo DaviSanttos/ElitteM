@@ -44,16 +44,4 @@ class PedidoModel extends Model
         return $results = $query->getResultArray();
     }
 
-
-    public function getTotalPedidos(){
-        $query = $this->db->query("
-        select sum(qtd) from pedido where fk_material = 2 AND fk_projeto = 1");
-
-        return $query->getFirstRow();
-    }
-
-    public function updatTotal($qtd){
-        $query = $this->db->query("UPDATE pedido SET qtd = ?- ?", [$qtd, $this->getTotalPedidos()]);
-    }
-
 }

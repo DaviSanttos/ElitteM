@@ -29,16 +29,15 @@
     <tbody>
         <?php foreach($materiaisS as $material) : ?>
         <tr>
-            <th scope="row">10</th>
+            <th scope="row"><?= $material["qtd"]?></th>
             <td><?= $material["nome_material"]?></td>
-            <td><?= $material["qtd"]?></td>
+            <td><?= $material["preco"]?></td>
             <td><?= $material["nome_cliente"]?></td>
             <td><?= $material["nome_fornecedor"]?></td>
             <td><?= $material["nome_marca"]?></td>
             <td><?= $material["nome_categoria"]?></td>
             <td class="d-flex justify-content-around"><?= $material["dataS"]?>
-            <?= session()->get("id_usuario"); ?>
-            <?php if($material["nivel"] == 1 && $material["fk_usuario"] == session()->get("id_usuario")) : ?>
+            <?php if($material["nivel"] == 1) : ?>
                 <button type="button" class="btn btn-success"><i class="bi bi-person-workspace"></i></button>
             <?php else : ?>
                 <button type="button" class="btn btn-warning"><i class="bi bi-person"></i></button>
