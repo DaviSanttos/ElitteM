@@ -49,8 +49,9 @@ $routes->get('graficos', 'PaginaAdmin::graficos');
 
 // funcoes para entrada de materiais
 $routes->get('salvar/(:num)/(:num)/(:num)', 'PaginaAdmin::salvarItem/$1/$2/$3');
-$routes->get('remover', 'PaginaAdmin::removerItem');
-$routes->get('projeto/buscar/(:segment)', 'PaginaAdmin::buscarItem/$1');
+$routes->get('remover/(:num)/(:num)', 'PaginaAdmin::removerItem/$1/$2');
+// $routes->get('projeto/buscar/(:segment)', 'PaginaAdmin::buscarItem/$1');
+$routes->get('subtrair/(:num)/(:num)/(:num)', 'PaginaAdmin::subtrairItem/$1/$2/$3');
 
 // $routes->get('/login', 'PaginaAdmin::sair');
 $routes->post('projetoListagem/novoCliente', 'PaginaAdmin::novoProjeto');

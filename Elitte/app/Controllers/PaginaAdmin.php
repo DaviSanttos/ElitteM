@@ -17,7 +17,13 @@ class PaginaAdmin extends BaseController
     }
     public function controle()
     {
-        return view('controle');
+        $pedidoModel = new PedidoModel;
+        $dados['materiaisS'] = $pedidoModel->getSaida();
+        // echo "<pre>";
+        // print_r($dados);
+        // echo "<pre>";
+        // exit;
+        return view('controle',$dados);
     }
     public function materiais()
     {
@@ -37,9 +43,12 @@ class PaginaAdmin extends BaseController
         $dados['cliente'] = $projetoModel->find($id);
         $dados["materiais"] = $materialModel->findAll();
         $dados['materiais_pedido'] = $pedidoModel->getMateriais($id);
+<<<<<<< HEAD
 
         $pedidoModel->updatTotal(20);
         // print_r($dados['materiais_pedido']);
+=======
+>>>>>>> 99a780ee9a876bb0d0f4b50a792f478632ef145a
         return view('projeto',$dados);
     }
     public function graficos()
@@ -118,19 +127,16 @@ class PaginaAdmin extends BaseController
         $pedidoModel = new PedidoModel();
         $pedido_materialModel = new PedidoMaterialModel();
         $idm = $materialModel->getPreco($fk);
-
+        // $id_usuario =  session()->get('id_usuario');
         $arr = [
             'qtd' => $qtd,
             'fk_material' => $fk,
             'fk_projeto' => $cli,
-            'preco' => $idm->preco
+            'preco' => $idm->preco,
+            'fk_usuario' => $id_usuario
         ];
         $pedidoModel->insert($arr);
-        $pedido_id = $pedidoModel->getInsertID();
-        
-        // echo "<pre>";
-        // print_r($idm->preco);
-        // echo "<pre>";
+        $pedido_id = $pedidoModel->getInsertID();     
         
         $arr2 = [
             'fk_pedido' => $pedido_id,
@@ -141,4 +147,30 @@ class PaginaAdmin extends BaseController
         print_r($arr2);
         $pedido_materialModel->save($arr2);
     }
+
+    public function removerItem($id,$cli){
+        $pedidoModel = new PedidoModel();
+
+        $pedidoModel->delete($id);
+
+        return redirect()->to(base_url("projeto/$cli"));
+    }
+
+    public function subtrairItem($id,$qtd,$cli){
+    $pedidoModel = new PedidoModel();
+
+    if($qtd == '0'){
+        $pedidoModel->delete($id);
+    }
+
+    $arrAtualizado = [
+        'id_pedido' => $id,
+        'qtd' => $qtd
+    ];
+
+    $pedidoModel->save($arrAtualizado);
+    
+    return redirect()->to(base_url("projeto/$cli"));
+    }
+
 }

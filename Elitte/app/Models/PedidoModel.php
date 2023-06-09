@@ -9,11 +9,11 @@ class PedidoModel extends Model
     protected $table            = 'pedido';
     protected $primaryKey       = 'id_pedido';
     protected $useAutoIncrement = true;
-    protected $allowedFields    = ["qtd","fk_material","fk_projeto", "preco"];
+    protected $allowedFields    = ["qtd","fk_material","fk_projeto", "preco","fk_usuario"];
 
 
     public function getMateriais($id){
-        $query = $this->db->query("SELECT sum(p.qtd) 'qtd', p.preco, m.nome_material, nome_fornecedor, mc.nome_marca, nome_categoria from pedido p 
+        $query = $this->db->query("SELECT p.id_pedido, p.qtd , p.preco, m.nome_material, nome_fornecedor, mc.nome_marca, nome_categoria from pedido p 
         inner join materiais m 
         on p.fk_material = m.id_material 
         inner join fornecedores f 
@@ -21,7 +21,25 @@ class PedidoModel extends Model
         inner join marcas mc 
         on m.fk_marca = mc.id_marca
         inner join categorias c
-        on m.fk_categoria = c.id_categoria where p.fk_projeto = $id group by m.id_material ");
+        on m.fk_categoria = c.id_categoria where p.fk_projeto = $id");
+
+        return $results = $query->getResultArray();
+    }
+
+    public function getSaida(){
+        $query = $this->db->query("SELECT l.qtd, l.preco,cli.nome_cliente, m.nome_material,f.nome_fornecedor, mc.nome_marca, c.nome_categoria, date_format(l.datalog, '%d/%m/%Y') as dataS, us.nivel, l.fk_usuario from logg l
+        inner join materiais m 
+        on l.fk_material = m.id_material
+        inner join fornecedores f 
+        on m.fk_fornecedor = f.id_fornecedor 
+        inner join marcas mc 
+        on m.fk_marca = mc.id_marca 
+        inner join categorias c
+        on m.fk_categoria = c.id_categoria 
+        inner join cliente cli
+        on l.fk_projeto = cli.id_cliente
+        inner join usuario us
+        on l.fk_usuario = us.id_usuario");
 
         return $results = $query->getResultArray();
     }
