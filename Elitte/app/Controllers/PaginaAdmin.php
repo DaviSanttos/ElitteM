@@ -37,6 +37,8 @@ class PaginaAdmin extends BaseController
         $dados['cliente'] = $projetoModel->find($id);
         $dados["materiais"] = $materialModel->findAll();
         $dados['materiais_pedido'] = $pedidoModel->getMateriais($id);
+
+        $pedidoModel->updatTotal(20);
         // print_r($dados['materiais_pedido']);
         return view('projeto',$dados);
     }
