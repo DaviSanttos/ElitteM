@@ -38,13 +38,11 @@
 
 
   async function getDados() {
-    dados = await fetch('/graficos')
-      .then(T => T.json());
 
-    arr = JSON.stringify(dados);
-    array = JSON.parse(arr);
-
-    array.forEach(element => {
+      let dados = <?= json_encode($valores)?>;
+      console.log(dados);
+      
+    dados.forEach(element => {
       categorias.push(element.nome_categoria);
       valores.push(element.preco);
     });
@@ -75,22 +73,22 @@
       }
     });
 
-    // funçao para adicionar
-    function addData(chart, label, data) {
-      chart.data.labels.push(label);
-      chart.data.datasets.forEach((dataset) => {
-        dataset.data.push(data);
-      });
-      chart.update();
-    }
-    // funçao para remover
-    function removeData(chart) {
-      chart.data.labels.pop();
-      chart.data.datasets.forEach((dataset) => {
-        dataset.data.pop();
-      });
-      chart.update();
-    }
+    // // funçao para adicionar
+    // function addData(chart, label, data) {
+    //   chart.data.labels.push(label);
+    //   chart.data.datasets.forEach((dataset) => {
+    //     dataset.data.push(data);
+    //   });
+    //   chart.update();
+    // }
+    // // funçao para remover
+    // function removeData(chart) {
+    //   chart.data.labels.pop();
+    //   chart.data.datasets.forEach((dataset) => {
+    //     dataset.data.pop();
+    //   });
+    //   chart.update();
+    // }
 
 
     // console.log(addData(chart,"davi",2000));
@@ -98,34 +96,34 @@
 
 
     // funcao para atualizar options
-    function updateConfigAsNewObject(chart) {
-      chart.options = {
-        responsive: true,
-        plugins: {
-          title: {
-            display: true,
-            text: 'David'
-          }
-        },
-        scales: {
-          x: {
-            display: true
-          },
-          y: {
-            display: true
-          }
-        }
-      };
-      chart.update();
-    }
+    // function updateConfigAsNewObject(chart) {
+    //   chart.options = {
+    //     responsive: true,
+    //     plugins: {
+    //       title: {
+    //         display: true,
+    //         text: 'David'
+    //       }
+    //     },
+    //     scales: {
+    //       x: {
+    //         display: true
+    //       },
+    //       y: {
+    //         display: true
+    //       }
+    //     }
+    //   };
+    //   chart.update();
+    // }
 
-    // funcao para alterar o titulo
-    function updateConfigByMutating(chart) {
-      chart.options.plugins.title.text = 'Estoque em R$ por';
-      chart.update();
-    }
-    updateConfigAsNewObject(chart);
-    console.log(updateConfigByMutating(chart));
+    // // funcao para alterar o titulo
+    // function updateConfigByMutating(chart) {
+    //   chart.options.plugins.title.text = 'Estoque em R$ por';
+    //   chart.update();
+    // }
+    // updateConfigAsNewObject(chart);
+    // console.log(updateConfigByMutating(chart));
   }
 
   getDados();

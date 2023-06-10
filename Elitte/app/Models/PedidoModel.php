@@ -61,4 +61,15 @@ class PedidoModel extends Model
         return $results = $query->getResultArray();
     }
 
+    public function getCategoriaPreco(){
+        $query = $this->db->query("SELECT sum(p.preco*p.qtd) 'preco', c.nome_categoria from pedido p
+        inner join materiais m
+        on p.fk_material = m.id_material
+        inner join categorias c 
+        on m.fk_categoria = c.id_categoria
+        group by c.nome_categoria order by SUM(p.preco*p.qtd) DESC");
+        
+        return $results = $query->getResultArray();
+}
+
 }

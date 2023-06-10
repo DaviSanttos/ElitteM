@@ -12,10 +12,6 @@ class MaterialModel extends Model
 
     protected $allowedFields = ["nome_material", "qtd_materia", "preco", "fk_fornecedor", "fk_categoria", "fk_marca", "fk_loc"];
 
-    // public function _construct(){
-    //     parent::_construct();
-    //     $this->db = db_connect();
-    // }
 
     public function getMateriais($filtro = ""){
 

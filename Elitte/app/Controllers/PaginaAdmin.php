@@ -42,16 +42,18 @@ class PaginaAdmin extends BaseController
         $dados['materiais_pedido'] = $pedidoModel->getMateriais($id);
         return view('projeto',$dados);
     }
-    public function graficos()
-    {
-        $categoriaModel = new CategoriaModel();
-        $results = $categoriaModel->getCategoriaPreco();
-        return json_encode($results, JSON_UNESCAPED_UNICODE);
-    }
+    // public function graficos()
+    // {
+    //     $pedidoModel = new PedidoModel();
+    //     $results["valores"] = $pedidoModel->getCategoriaPreco();
+    //     return $results;
+    // }
 
     public function painel()
     {
-        return view('painel');
+        $pedidoModel = new PedidoModel();
+        $results["valores"] = $pedidoModel->getCategoriaPreco();
+        return view('painel',$results);
     }
     public function sair()
     {
@@ -109,8 +111,6 @@ class PaginaAdmin extends BaseController
         // return view('projetoListagem',$dados);
         return redirect()->to(base_url("/projetoListagem"));
     }
-
-
 
     public function salvarItem($fk,$qtd,$cli){
         $materialModel = new MaterialModel();

@@ -34,7 +34,7 @@
         }
 
         .table>:not(caption)>*>*{
-        padding: 0.3rem 0.3rem !important; 
+        padding: 0.2rem 0.2rem !important; 
     }
     </style>
     <title>Elitte Moveis | Estoque</title>
