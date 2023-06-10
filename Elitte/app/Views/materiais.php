@@ -33,30 +33,26 @@
 <table class="table table-striped table-bordered mt-5 container">
     <thead class="table-dark">
         <tr>
-            <th scope="col">Qtd.</th>
+            <th scope="col">Total Qtd.</th>
             <th scope="col">Materiais</th>
-            <th scope="col">Preço</th>
-            <th scope="col">Medida</th>
+            <th scope="col">Total R$</th>
             <th scope="col">Fornecedor</th>
             <th scope="col">Marca</th>
             <th scope="col">Categoria</th>
-            <th scope="col">Entrada</th>
-            <th scope="col">Saída</th>
         </tr>
     </thead>
     <tbody id="listagem">
-        <?php foreach ($todos as $material): ?>
+        <?php foreach ($materiais as $material): ?>
             <tr>
                 <th scope="row">
-                    <?= $material["qtd_material"] ?>
+                    <?= $material["qtd"] ?>
                 </th>
                 <td>
                     <?= $material["nome_material"] ?>
                 </td>
                 <td>
-                    <?= $material["preco"] ?>
+                    <?= $material["total"] ?>
                 </td>
-                <td></td>
                 <td>
                     <?= $material["nome_fornecedor"] ?>
                 </td>
@@ -66,8 +62,6 @@
                 <td>
                     <?= $material["nome_categoria"] ?>
                 </td>
-                <td>0,00</td>
-                <td>0</td>
             </tr>
         <?php endforeach; ?>
     </tbody>
@@ -81,11 +75,11 @@
 
         let table = await document.getElementById("listagem");
 
-        dados = await $.post('materiais/pesquisar', {
+        dados = await $.post('buscar', {
             param: $this.val()
         }, console.log('Enviado!'));
         arr = JSON.parse(dados);
-        console.log(table);
+        console.log(dados);
         table.innerHTML = "";
         arr.forEach(element => {
 
@@ -98,15 +92,12 @@
             table.innerHTML += `
     <tbody>
             <tr>
-                <th scope="row">${element.qtd_material}</th>
+                <th scope="row">${element.qtd}</th>
                 <td>${element.nome_material}</td>
-                <td>${element.preco}</td>
-                <td></td>
+                <td>${element.total}</td>
                 <td>${element.nome_fornecedor}</td>
                 <td>${element.nome_marca}</td>
                 <td>${element.nome_categoria}</td>
-                <td>0,00</td>
-                <td>0</td>
             </tr>
     </tbody>`
         });

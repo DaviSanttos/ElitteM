@@ -9,22 +9,32 @@
 />
 
 <style>
-    #saida{
-        
+    .form-control {
+        padding: 0 !important;
     }
+
+    #h1Projeto{
+        color: black;
+    }
+   
 </style>
-<h6 class="mr-auto" id="h1Projeto">PROJETO:
-    <?= $cliente["nome_cliente"] ?>
-</h6>
-<div class="d-flex m-4 justify-content-center">
 
-    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Finalizar Projeto
-    </button>
-
-    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalentrada">
-        Entrada
-    </button>
+<div class="row ">
+<div class="col-md-5 container mt-2">
+    <h3 class="mr-auto btn btn-primary btn-xl" id="h1Projeto">Projeto:
+        <?= $cliente["nome_cliente"] ?>
+    </h3>
+</div>
+    <div class="col-md-2 mt-2">
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Finalizar Projeto
+        </button>
+    </div>
+        <div class="col-md-2 mt-2">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalentrada">
+                Entrada
+            </button>
+        </div>
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -90,7 +100,7 @@
     </div>
 </div>
 
-<table class="table table-striped table-bordered mt-3 container text-center">
+<table class="table table-striped table-bordered mt-3 container ">
     <thead class="table-dark">
         <tr>
             <th>-</th>
@@ -105,7 +115,7 @@
     <tbody>
         <?php foreach($materiais_pedido as $material) : ?>
         <tr>
-            <td><a href="/remover/<?= $material["id_pedido"] ?>/<?= $cliente["id_cliente"]?>"><button type="button" class="btn btn-danger">
+            <td class="text-center"><a href="/remover/<?= $material["id_pedido"] ?>/<?= $cliente["id_cliente"]?>"><button type="button" class="btn btn-danger ">
                 <i class="bi bi-trash"></i>
             </button></a></td>
             <th scope="row" class="col-md-1"><input id="<?= 'pedido' . $material['id_pedido'] ?>" class="form-control text-center" type="number" min="0" value="<?= $material["qtd"]; ?>" onkeypress="submit(event,<?= $material["id_pedido"] ?>)"></th>

@@ -39,7 +39,24 @@ class PedidoModel extends Model
         inner join cliente cli
         on l.fk_projeto = cli.id_cliente
         inner join usuario us
-        on l.fk_usuario = us.id_usuario");
+        on l.fk_usuario = us.id_usuario order by l.datalog desc");
+
+        return $results = $query->getResultArray();
+    }
+
+
+    public function getAllMateriais($filtro = ""){
+        $query = $this->db->query("SELECT sum(p.preco*p.qtd) 'total', sum(p.qtd) 'qtd', m.nome_material,f.nome_fornecedor, mc.nome_marca, c.nome_categoria from pedido p
+        inner join materiais m
+        on p.fk_material = m.id_material 
+        inner join fornecedores f 
+        on m.fk_fornecedor = f.id_fornecedor 
+        inner join marcas mc 
+        on m.fk_marca = mc.id_marca
+        inner join categorias c
+        on m.fk_categoria = c.id_categoria  
+        where M.nome_material LIKE '$filtro%'
+        group by p.fk_material");
 
         return $results = $query->getResultArray();
     }

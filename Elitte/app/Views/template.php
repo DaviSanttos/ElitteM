@@ -32,6 +32,10 @@
             --bs-btn-padding-y: 0.01rem !important;
             --bs-btn-padding-x: 0.35rem !important;
         }
+
+        .table>:not(caption)>*>*{
+        padding: 0.3rem 0.3rem !important; 
+    }
     </style>
     <title>Elitte Moveis | Estoque</title>
 </head>

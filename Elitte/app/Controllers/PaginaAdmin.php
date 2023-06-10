@@ -20,10 +20,6 @@ class PaginaAdmin extends BaseController
     {
         $pedidoModel = new PedidoModel;
         $dados['materiaisS'] = $pedidoModel->getSaida();
-        // echo "<pre>";
-        // print_r($dados);
-        // echo "<pre>";
-        // exit;
         return view('controle',$dados);
     }
     public function materiais()
@@ -65,9 +61,8 @@ class PaginaAdmin extends BaseController
     // Envio de dados para a view materiais.php
     public function indexMateriais()
     {
-        $materialModel = new MaterialModel();
-        $dados["materiais"] = $materialModel->findAll();
-        $dados["todos"] = $materialModel->getMateriais();
+        $pedidoModel = new PedidoModel();
+        $dados["materiais"] = $pedidoModel->getAllMateriais();
 
         return view("materiais", $dados);
     }
@@ -77,6 +72,17 @@ class PaginaAdmin extends BaseController
         $dadosEnviados = $this->request->getPost();
 
         $dados = $materialModel->getMateriais($dadosEnviados["param"]);
+        return json_encode($dados, JSON_UNESCAPED_UNICODE);
+    // ---------------------------------------------
+
+    }
+
+    public function buscar()
+    {
+        $pedidoModel = new PedidoModel();
+        $dadosEnviados = $this->request->getPost();
+
+        $dados = $pedidoModel->getAllMateriais($dadosEnviados["param"]);
         return json_encode($dados, JSON_UNESCAPED_UNICODE);
     // ---------------------------------------------
 
@@ -104,18 +110,7 @@ class PaginaAdmin extends BaseController
         return redirect()->to(base_url("/projetoListagem"));
     }
 
-    public function buscarItem($filtro){
-        // $dadosEnviados = $this->request->getPost();
 
-        // $dados = $materialModel->getMateriais($dadosEnviados["param"]);
-        // return json_encode($dados, JSON_UNESCAPED_UNICODE);
-
-        $materialModel = new MaterialModel();
-
-            $materiais = $materialModel->getMateriais($filtro);
-            return json_encode($materiais, JSON_UNESCAPED_UNICODE);
-            // exit;
-    }
 
     public function salvarItem($fk,$qtd,$cli){
         $materialModel = new MaterialModel();

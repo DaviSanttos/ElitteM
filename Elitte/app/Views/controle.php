@@ -8,10 +8,10 @@
 }
 </style>
 <div class="d-flex flex-row-reverse justify-content-between container">
-    <button class= "btn btn-success mt-1 p-2 " onclick="window.print()" id="button">Imprimir / Salvar PDF</button>  
-    <input class="btn btn-secondary mt-1 p-2" type="week" id="i1">
-    <input class="btn btn-secondary mt-1 p-2" type="month" id="i2">
-    <div class="input-group-text p-2" style="margin-right: 0px;">R$ 1421412411</div>
+    <button class= "btn btn-success mt-1 p-2 mt-2 mb-2" onclick="window.print()" id="button">Imprimir / Salvar PDF</button>  
+    <input class="btn btn-secondary mt-1 p-2 mt-2 mb-2" type="week" id="i1">
+    <input class="btn btn-secondary mt-1 p-2 mt-2 mb-2" type="month" id="i2">
+    <div class="input-group-text p-2 mt-2 mb-2" style="margin-right: 0px;">R$ 1421412411</div>
 </div>
 <table class="table table-striped table-bordered mt-1 container">
     <thead class="table-dark">
