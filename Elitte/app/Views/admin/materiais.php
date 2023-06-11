@@ -48,7 +48,7 @@
         style="margin-top: 10px;">Novo Fornecedor</button></a>
   </div>
   <div class="text-center">
-    <button type="submit" class="btn btn-warning btn-lg col-md-3 mt-3">Cadastrar</button>
+    <button type="submit" class="btn btn-warning col-md-3 mt-3">Cadastrar</button>
   </div>
 </div>
 <?= form_close() ?>
@@ -64,7 +64,7 @@
 </div>
 
 <!--fim pesquisa-->
-<table class="table table-striped table-bordered mt-5 container w-75">
+<table class="table table-striped table-bordered mt-5 container w-75 ">
   <thead class="table-dark">
     <tr>
       <th scope="col">Ação</th>
@@ -73,7 +73,6 @@
       <th scope="col">Fornecedor</th>
       <th scope="col">Marca</th>
       <th scope="col">Categoria</th>
-      <th scope="col">Medida</th>
     </tr>
   </thead>
   <tbody id="mytable">
@@ -158,7 +157,6 @@
         <td>
           <?= $item["nome_categoria"] ?>
         </td>
-        <td></td>
       </tr>
     <?php endforeach; ?>
   </tbody>

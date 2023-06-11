@@ -49,6 +49,16 @@ class PaginaAdmin extends BaseController
     //     return $results;
     // }
 
+      public function SaidaMes($mes)
+    {
+        $pedidoModel = new PedidoModel();
+        $dados = $pedidoModel->getSaidaMes($mes);
+        // print_r($dados);
+        return json_encode($dados, JSON_UNESCAPED_UNICODE);
+        // return redirect()->to(base_url("/controle"));
+    }
+
+
     public function painel()
     {
         $pedidoModel = new PedidoModel();

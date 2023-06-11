@@ -45,7 +45,7 @@ $routes->get('projetoListagem', 'PaginaAdmin::listaProjetos');
 // $routes->get('/projeto', 'PaginaAdmin::telaProjeto');
 $routes->get('projeto/finalizarProjeto/(:num)', 'PaginaAdmin::finalizarProjeto/$1');
 $routes->get('painel', 'PaginaAdmin::painel');
-// $routes->get('graficos', 'PaginaAdmin::graficos');
+$routes->get('saidaMes/(:segment)', 'PaginaAdmin::SaidaMes/$1');
 
 // funcoes para entrada de materiais
 $routes->get('salvar/(:num)/(:num)/(:num)', 'PaginaAdmin::salvarItem/$1/$2/$3');
