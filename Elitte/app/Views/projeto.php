@@ -9,7 +9,7 @@
 />
 
 <style>
-    .form-control {
+    th input.form-control {
         padding: 0 !important;
     }
 
@@ -67,30 +67,33 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <div class="modal-body">
-                <div class="mb-3">
-                    <input type="text" class="form-control" id="preco">
-                </div>
-                <div class="mb-3">
+            <div class="modal-body row">
+                <div class="mb-3 col-md-9">
                     <label for="fkmarca" class="form-label">Materiais</label>
                     <select name="selecao" id="selecao" class="form-select">
                         <?php foreach ($materiais as $material) : ?>
                             <option value="<?= $material["id_material"] ?>">
                                 <?= $material["nome_material"] ?>
                             </option>
-                        <?php endforeach; ?>
-                    </select>
-
-                    <table class="table table-striped table-bordered mt-3 container">
-                        <thead class="table-dark">
-                            <tr>
-                                <th scope="col">Qtd.</th>
-                                <th scope="col">Materiais</th>
-                            </tr>
-                        </thead>
-                        <tbody id="lista"></tbody>
-                    </table>
-                </div>
+                            <?php endforeach; ?>
+                        </select>
+                        
+                        <table class="table table-striped table-bordered mt-3 container">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">Qtd.</th>
+                                    <th scope="col">Materiais</th>
+                                </tr>
+                            </thead>
+                            <tbody id="lista"></tbody>
+                        </table>
+                    </div>
+                    <div class="mb-3 col-md-2">
+                    <label for="preco" class="form-label">Quantidade</label>
+                    <input type="number" class="form-control " id="preco" autocomplete="off">
+                    <label for=""></label>
+                    <button class="btn btn-primary form-control mt-1" id="enviar">OK</button>
+                    </div>
             </div>
 
             <div class="modal-footer">
@@ -105,8 +108,8 @@
         <tr>
             <th>-</th>
             <th scope="col">Qtd.</th>
-            <th scope="col">Materiais</th>
-            <th scope="col">Preço</th>
+            <th scope="col">MateriaL</th>
+            <th scope="col">Preço/Un.</th>
             <th scope="col">Fornecedor</th>
             <th scope="col">Marca</th>
             <th scope="col">Categoria</th>
@@ -120,7 +123,7 @@
             </button></a></td>
             <th scope="row" class="col-md-1"><input id="<?= 'pedido' . $material['id_pedido'] ?>" class="form-control text-center" type="number" min="0" value="<?= $material["qtd"]; ?>" onkeypress="submit(event,<?= $material["id_pedido"] ?>)"></th>
             <td><?= $material["nome_material"]; ?></td>
-            <td><?= $material["preco"]; ?></td>
+            <td>R$: <?= $material["preco"]; ?></td>
             <td><?= $material["nome_fornecedor"]; ?></td>
             <td><?= $material["nome_marca"]; ?></td>
             <td><?= $material["nome_categoria"]; ?></td>
@@ -138,16 +141,11 @@
     const selecao = document.getElementById("selecao");
     const lista = document.getElementById("lista");
     const saida = document.getElementById("saida");
+    const btnEnviar = document.getElementById("enviar");
     const clienteId = <?= json_encode($cliente["id_cliente"]) ?>;
 
-    // console.log(qtd.innerHTML);
-
-    // function subtrair(p){
-    //     console.log(pId);
-    //     await fetch(`http://localhost:8080/subtrair/${pId}/${produtoQttd}`);
-    // }
     
-    selecao.addEventListener("change", async () => {;
+    btnEnviar.addEventListener("click", async () => {;
         let produtoId = selecao.value;
         let produtoQttd = preco.value;
 

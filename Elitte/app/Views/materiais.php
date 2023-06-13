@@ -19,7 +19,7 @@
         <div class="col-md-4 pr-0" id="pesquisa">
             <div class="input-group">
                 <input class="form-control border-end-0" placeholder="Pesquisar" type="text" name="filtro"
-                    id="example-search-input">
+                id="example-search-input">
                 <span class="input-group-append">
                     <button class="btn btn-outline-secondary bg-white border-bottom-0 border ms-n5" type="button">
                         <img src="/img/icons-pesquisar.svg">
@@ -27,6 +27,7 @@
                 </span>
             </div>
         </div>
+        <div class="input-group-text p-2 mb-2 col-md-2" style="margin-right: 0px;">R$ 1421412411</div>
     </div>
 </div>
 

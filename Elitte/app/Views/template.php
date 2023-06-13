@@ -52,11 +52,6 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" aria-current="page" href="/painel">Gráfico</a>
                     </li>
-                    <?php if (session()->has("id_usuario") && session()->get("nivel") == 1) : ?>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/admin/material">Cadastrar</a>
-                    </li>
-                    <?php endif; ?>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="/materiais">Materiais</a>
                     </li>
@@ -66,6 +61,11 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" href="/projetoListagem">Projetos</a>
                     </li>
+                    <?php if (session()->has("id_usuario") && session()->get("nivel") == 1) : ?>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/admin/material">Cadastrar</a>
+                    </li>
+                    <?php endif; ?>
                     <li class="nav-item">
                         <a class="nav-link text-danger" href="/sair">Sair</a>
                     </li>

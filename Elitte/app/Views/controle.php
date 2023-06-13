@@ -11,7 +11,6 @@
     <button class= "btn btn-success mt-1 p-2 mt-2 mb-2" onclick="window.print()" id="button">Imprimir / Salvar PDF</button>  
     <input class="btn btn-secondary mt-1 p-2 mt-2 mb-2" type="week" id="weekId">
     <input class="btn btn-secondary mt-1 p-2 mt-2 mb-2" type="month" id="monthId">
-    <div class="input-group-text p-2 mt-2 mb-2" style="margin-right: 0px;">R$ 1421412411</div>
 </div>
 <table class="table table-striped table-bordered mt-1 container">
     <thead class="table-dark">

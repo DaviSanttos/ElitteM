@@ -6,6 +6,7 @@
     <label for="nome_categoria" class="form-label">Categoria</label>
     <input type="text" class="form-control" id="nome_categoria" name="nome_categoria">
     <button type="submit" class="btn btn-warning mt-2">Cadastar</button>
+    <a href="<?= base_url("admin/material")?>"><button type="button" class="btn btn-dark mt-2">Voltar</button></a>
   </div>
 <?= form_close(); ?>
   <?php if (session()->has("tipo")): ?>

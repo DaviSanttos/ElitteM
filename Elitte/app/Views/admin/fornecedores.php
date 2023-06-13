@@ -6,6 +6,7 @@
     <label for="nome_forencedor" class="form-label">Fornecedores</label>
     <input type="text" class="form-control" id="nome_fornecedor" name="nome_fornecedor">
     <button type="submit" class="btn btn-warning mt-2">Cadastar</button>
+    <a href="<?= base_url("admin/material")?>"><button type="button" class="btn btn-dark mt-2">Voltar</button></a>
   </div>
   <?= form_close(); ?>
   <?php if (session()->has("tipo")): ?>

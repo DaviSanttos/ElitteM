@@ -67,7 +67,7 @@
 <table class="table table-striped table-bordered mt-5 container w-75 ">
   <thead class="table-dark">
     <tr>
-      <th scope="col">Ação</th>
+      <th scope="col-md-1">Ação</th>
       <th scope="col">Material</th>
       <th scope="col">Preço</th>
       <th scope="col">Fornecedor</th>
@@ -78,7 +78,7 @@
   <tbody id="mytable">
     <?php foreach ($todos as $item): ?>
       <tr>
-        <td class="text-center"><button type="button" class="btn btn-success" data-bs-toggle="modal"
+        <td class="text-center col-md-1"><button type="button" class="btn btn-success" data-bs-toggle="modal"
             data-bs-target="#mm<?= $item["id_material"] ?>" data-bs-whatever="@mdo"><i class="bi bi-pencil"></i></button>
           <button type="button" class="btn btn-danger" data-bs-toggle="modal"
             data-bs-target="#ma<?= $item["id_material"] ?>">
