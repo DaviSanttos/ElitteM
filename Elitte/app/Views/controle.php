@@ -2,16 +2,26 @@
 <?php $this->section('conteudo') ?>
 <style>
     @media print {
-  #button, #i1, #i2{
-  display: none;
+  .button, #i1, #i2{
+    display: none;
   }
 }
+
+/* .my-custom-scrollbar {
+position: relative;
+height: 80vh;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
+} */
 </style>
 <div class="d-flex flex-row-reverse justify-content-between container">
-    <button class= "btn btn-success mt-1 p-2 mt-2 mb-2" onclick="window.print()" id="button">Imprimir / Salvar PDF</button>  
-    <input class="btn btn-secondary mt-1 p-2 mt-2 mb-2" type="week" id="weekId">
-    <input class="btn btn-secondary mt-1 p-2 mt-2 mb-2" type="month" id="monthId">
+    <button class= "btn btn-success mt-1 p-2 mt-2 mb-2 button" onclick="window.print()" id="button">Imprimir / Salvar PDF</button>  
+    <input class="btn btn-secondary mt-1 p-2 mt-2 mb-2 button" type="week" id="weekId">
+    <input class="btn btn-secondary mt-1 p-2 mt-2 mb-2 button" type="month" id="monthId">
 </div>
+<!-- <div class="table-wrapper-scroll-y my-custom-scrollbar"> -->
 <table class="table table-striped table-bordered mt-1 container">
     <thead class="table-dark">
         <tr>
@@ -37,16 +47,16 @@
             <td><?= $material["nome_categoria"]?></td>
             <td class="d-flex justify-content-around"><?= $material["dataS"]?>
             <?php if($material["nivel"] == 1) : ?>
-                <button type="button" class="btn btn-success"><i class="bi bi-person-workspace"></i></button>
+                <button type="button" class="btn btn-success button"><i class="bi bi-person-workspace"></i></button>
             <?php else : ?>
-                <button type="button" class="btn btn-warning"><i class="bi bi-person"></i></button>
+                <button type="button" class="btn btn-warning button"><i class="bi bi-person"></i></button>
             <?php endif ; ?>
         </td>
         </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
-
+            <!-- </div> -->
 <script>
     const W = document.getElementById("weekId");
     const M = document.getElementById("monthId");

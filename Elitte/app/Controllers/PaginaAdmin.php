@@ -22,10 +22,10 @@ class PaginaAdmin extends BaseController
         $dados['materiaisS'] = $pedidoModel->getSaida();
         return view('controle',$dados);
     }
-    public function materiais()
-    {
-        return view('materiais');
-    }
+    // public function materiais()
+    // {
+    //     return view('materiais');
+    // }
     public function listaProjetos()
     {
         $projetoModel = new ProjetoModel();
@@ -75,9 +75,12 @@ class PaginaAdmin extends BaseController
     {
         $pedidoModel = new PedidoModel();
         $dados["materiais"] = $pedidoModel->getAllMateriais();
+        $dados["real"] = $pedidoModel->getReais();
+
 
         return view("materiais", $dados);
     }
+
     public function pesquisar()
     {
         $materialModel = new MaterialModel();
@@ -210,7 +213,7 @@ class PaginaAdmin extends BaseController
 
     $pedidoModel->save($arrAtualizado);
     
-    return redirect()->to(base_url("projeto/$cli"));
+        return redirect()->to(base_url("projeto/$cli"));
     }
 
 }

@@ -7,6 +7,15 @@
         padding-right: 0 !important;
         width: 30rem !important;
     }
+
+    .my-custom-scrollbar {
+position: relative;
+height: 80vh;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
+}
 </style>
 
 <div class="col-md-12 container">
@@ -27,46 +36,48 @@
                 </span>
             </div>
         </div>
-        <div class="input-group-text p-2 mb-2 col-md-2" style="margin-right: 0px;">R$ 1421412411</div>
+        <div class="input-group-text p-2 mb-2 col-md-2" style="margin-right: 0px;">R$ <?= $real->real ?></div>
     </div>
 </div>
 
-<table class="table table-striped table-bordered mt-5 container">
-    <thead class="table-dark">
-        <tr>
-            <th scope="col">Total Qtd.</th>
-            <th scope="col">Materiais</th>
-            <th scope="col">Total R$</th>
-            <th scope="col">Fornecedor</th>
-            <th scope="col">Marca</th>
-            <th scope="col">Categoria</th>
-        </tr>
-    </thead>
-    <tbody id="listagem">
-        <?php foreach ($materiais as $material): ?>
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-striped table-bordered mt-5 container">
+        <thead class="table-dark">
             <tr>
-                <th scope="row">
-                    <?= $material["qtd"] ?>
-                </th>
-                <td>
-                    <?= $material["nome_material"] ?>
-                </td>
-                <td>
-                    <?= $material["total"] ?>
-                </td>
-                <td>
-                    <?= $material["nome_fornecedor"] ?>
-                </td>
-                <td>
-                    <?= $material["nome_marca"] ?>
-                </td>
-                <td>
-                    <?= $material["nome_categoria"] ?>
-                </td>
+                <th scope="col">Total Qtd.</th>
+                <th scope="col">Materiais</th>
+                <th scope="col">Total R$</th>
+                <th scope="col">Fornecedor</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Categoria</th>
             </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+        </thead>
+        <tbody id="listagem">
+            <?php foreach ($materiais as $material): ?>
+                <tr>
+                    <th scope="row">
+                        <?= $material["qtd"] ?>
+                    </th>
+                    <td>
+                        <?= $material["nome_material"] ?>
+                    </td>
+                    <td>
+                        <?= $material["total"] ?>
+                    </td>
+                    <td>
+                        <?= $material["nome_fornecedor"] ?>
+                    </td>
+                    <td>
+                        <?= $material["nome_marca"] ?>
+                    </td>
+                    <td>
+                        <?= $material["nome_categoria"] ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
 <script>
     let dados = "";
     let arr = "";

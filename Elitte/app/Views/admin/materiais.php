@@ -3,6 +3,17 @@
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"> </script>
 <!-- <form class="row g-3 container m-auto w-75"> -->
 
+<style>
+    .my-custom-scrollbar {
+    position: relative;
+    height: 80vh;
+    overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+    display: block;
+    }
+</style>
+
 <?= form_open(base_url("/admin/material/cadastrar")) ?>
 <div class="row container m-auto w-75 align-items-center">
   <div class="col-md-6">
@@ -62,7 +73,6 @@
 <div class="hstack gap-3 container w-75 mt-2 ">
   <input class="form-control" type="text" placeholder="Procurar Item" aria-label="Procurar Item" id="camp" name="filtro">
 </div>
-
 <!--fim pesquisa-->
 <table class="table table-striped table-bordered mt-5 container w-75 ">
   <thead class="table-dark">
@@ -161,6 +171,7 @@
     <?php endforeach; ?>
   </tbody>
 </table>
+
 <script>
   let dados ="";
   let arr ="";

@@ -90,4 +90,11 @@ class PedidoModel extends Model
         return $results = $query->getResultArray();
 }
 
+public function getReais(){
+    $query = $this->db->query("SELECT sum(preco*qtd) 'real' from pedido");
+    
+    return $query->getRow();
+}
+
+
 }

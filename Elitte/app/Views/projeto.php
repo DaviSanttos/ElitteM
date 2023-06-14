@@ -64,7 +64,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Materiais</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
             </div>
 
             <div class="modal-body row">
@@ -102,7 +102,7 @@
         </div>
     </div>
 </div>
-
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
 <table class="table table-striped table-bordered mt-3 container ">
     <thead class="table-dark">
         <tr>
@@ -121,7 +121,7 @@
             <td class="text-center"><a href="/remover/<?= $material["id_pedido"] ?>/<?= $cliente["id_cliente"]?>"><button type="button" class="btn btn-danger ">
                 <i class="bi bi-trash"></i>
             </button></a></td>
-            <th scope="row" class="col-md-1"><input id="<?= 'pedido' . $material['id_pedido'] ?>" class="form-control text-center" type="number" min="0" value="<?= $material["qtd"]; ?>" onkeypress="submit(event,<?= $material["id_pedido"] ?>)"></th>
+            <th scope="row" class="col-md-1"><input id="<?= 'pedido' . $material['id_pedido'] ?>" class="form-control text-center" type="number" min="0" value="<?= $material["qtd"]; ?>" max="<?= $material["qtd"]; ?>" onkeypress="submit(event,<?= $material["id_pedido"] ?>)" ></th>
             <td><?= $material["nome_material"]; ?></td>
             <td>R$: <?= $material["preco"]; ?></td>
             <td><?= $material["nome_fornecedor"]; ?></td>
@@ -131,7 +131,7 @@
         <?php endforeach ; ?>
     </tbody>
 </table>
-
+        </div>
 <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 
 
@@ -156,13 +156,12 @@
         <td>${selecao.innerHTML}</td>
         </tr>`
     });
-
-    async function submit(event,idPedido) {
+    function submit(event,idPedido) {
         const saida = document.getElementById(`pedido${idPedido}`);
-        if(event.key == "Enter"){
-            await fetch(`http://localhost:8080/subtrair/${idPedido}/${saida.value}/${clienteId}`);
+            if(event.key == "Enter"){
+                window.location.assign(`http://localhost:8080/subtrair/${idPedido}/${saida.value}/${clienteId}`);
+            }
         }
-    }
     
     const selectMarca = new Choices(selecao,{
         noResultsText: 'Nenhuma marca encontrada',

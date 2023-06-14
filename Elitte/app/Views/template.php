@@ -36,6 +36,15 @@
         .table>:not(caption)>*>*{
         padding: 0.2rem 0.2rem !important; 
     }
+
+        .my-custom-scrollbar {
+    position: relative;
+    height: 80vh;
+    overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+    display: block;
+    }
     </style>
     <title>Elitte Moveis | Estoque</title>
 </head>
