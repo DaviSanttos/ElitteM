@@ -1,5 +1,6 @@
 <?php $this->extend('template') ?>
 <?php $this->section('conteudo') ?>
+<link rel="stylesheet" href="../css/style.scss">
 <style>
     @media print {
   .button, #i1, #i2{

@@ -1,5 +1,6 @@
 <?php $this->extend('template') ?>
 <?php $this->section('conteudo') ?>
+<link rel="stylesheet" href="../css/style.scss">
 <style>
   .grafico {
     width: 90%;
@@ -21,7 +22,7 @@
     background-color: rgb(41, 41, 41) !important;
   }
 </style>
-
+<script src="<?= base_url("js/chart.js") ?>"></script>
 <!-- import chartjs -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 

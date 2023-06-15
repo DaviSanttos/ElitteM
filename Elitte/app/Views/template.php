@@ -17,6 +17,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.scss">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/choices.min.css">
     <style>
         @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
     </style>
@@ -83,9 +86,10 @@
         </div>
     </nav>
     <main>
-    <?= $this->renderSection('conteudo') ?>
+        <?= $this->renderSection('conteudo') ?>
     </main>
 </body>
-
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/choices.js"></script>
 
 </html>

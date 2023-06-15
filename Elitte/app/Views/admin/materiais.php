@@ -1,5 +1,6 @@
 <?php $this->extend('template') ?>
 <?= $this->section('conteudo') ?>
+<link rel="stylesheet" href="../css/style.scss">
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"> </script>
 <!-- <form class="row g-3 container m-auto w-75"> -->
 

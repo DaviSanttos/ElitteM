@@ -1,5 +1,6 @@
 <?php $this->extend('template') ?>
 <?= $this->section('conteudo') ?>
+<link rel="stylesheet" href="../css/style.scss">
 <?= form_open(base_url("/admin/fornecedor/cadastrar")) ?>
 <div class="row container m-auto w-75 ">
   <div class="col-md-9 m-auto">

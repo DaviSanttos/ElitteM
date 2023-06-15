@@ -1,6 +1,6 @@
 <?php $this->extend('template') ?>
 <?php $this->section('conteudo') ?>
-
+<link rel="stylesheet" href="../css/style.scss">
 <head>
     <style>
         .card-np-color {
