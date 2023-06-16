@@ -5,7 +5,12 @@
     @media print {
   .button, #i1, #i2{
     display: none;
+  } 
+
+  table{
+    max-width: 1700px
   }
+
 }
 
 /* .my-custom-scrollbar {
@@ -23,7 +28,7 @@ display: block;
     <input class="btn btn-secondary mt-1 p-2 mt-2 mb-2 button" type="month" id="monthId">
 </div>
 <!-- <div class="table-wrapper-scroll-y my-custom-scrollbar"> -->
-<table class="table table-striped table-bordered mt-1 container">
+<table class="table table-striped table-bordered mt-1 container-lg">
     <thead class="table-dark">
         <tr>
             <th scope="col">Qtd.</th>
