@@ -76,12 +76,11 @@ CREATE TABLE logg(
     preco INT,
     fk_pedido INT,
     fk_material INT,
-    fk_projeto INT,
+    projeto VARCHAR(100),
     fk_usuario INT,
     datalog timestamp NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (fk_pedido) REFERENCES pedido(id_pedido),
     FOREIGN KEY (fk_material) REFERENCES material(id_material),
-    FOREIGN KEY (fk_projeto) REFERENCES cliente(id_cliente),
     FOREIGN KEY (fk_usuario) REFERENCES usuario(id_usuario)
 );
 

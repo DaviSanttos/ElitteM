@@ -152,6 +152,9 @@ class PaginaAdmin extends BaseController
 
     public function removerItem($id,$cli){
         $pedidoModel = new PedidoModel();
+        $projetoModel = new ProjetoModel();
+        $cliente = $projetoModel->find($cli);
+
         $id_usuario =  session()->get('id_usuario');
         $pedido = $pedidoModel->find($id);
 
@@ -160,9 +163,10 @@ class PaginaAdmin extends BaseController
             'preco' => $pedido["preco"],
             'fk_pedido' => $pedido["id_pedido"],
             'fk_material' => $pedido["fk_material"],
-            'fk_projeto' => $pedido["fk_projeto"],
+            'projeto' => $cliente["nome_cliente"],
             'fk_usuario' => $id_usuario
         ];
+  
 
         $loggModel = new LoggModel();
         $loggModel->save($arrInLog);
@@ -175,6 +179,8 @@ class PaginaAdmin extends BaseController
     public function subtrairItem($id,$qtd,$cli){
     $pedidoModel = new PedidoModel();
     $loggModel = new LoggModel();
+    $projetoModel = new ProjetoModel();
+    $cliente = $projetoModel->find($cli);
 
     $id_usuario =  session()->get('id_usuario');
 
@@ -185,7 +191,7 @@ class PaginaAdmin extends BaseController
         'preco' => $pedido["preco"],
         'fk_pedido' => $pedido["id_pedido"],
         'fk_material' => $pedido["fk_material"],
-        'fk_projeto' => $pedido["fk_projeto"],
+        'projeto' => $cliente["nome_cliente"],
         'fk_usuario' => $id_usuario
     ];
 
@@ -197,7 +203,7 @@ class PaginaAdmin extends BaseController
             'preco' => $pedido["preco"],
             'fk_pedido' => $pedido["id_pedido"],
             'fk_material' => $pedido["fk_material"],
-            'fk_projeto' => $pedido["fk_projeto"],
+            'projeto' => $cliente["nome_cliente"],
             'fk_usuario' => $id_usuario
         ];
 

@@ -27,7 +27,7 @@ class PedidoModel extends Model
     }
 
     public function getSaida(){
-        $query = $this->db->query("SELECT l.qtd, l.preco,cli.nome_cliente, m.nome_material,f.nome_fornecedor, mc.nome_marca, c.nome_categoria, date_format(l.datalog, '%d/%m/%Y') as dataS, us.nivel, l.fk_usuario from logg l
+        $query = $this->db->query("SELECT l.qtd, l.preco,l.projeto, m.nome_material,f.nome_fornecedor, mc.nome_marca, c.nome_categoria, date_format(l.datalog, '%d/%m/%Y') as dataS, us.nivel, l.fk_usuario from logg l
         inner join materiais m 
         on l.fk_material = m.id_material
         inner join fornecedores f 
@@ -36,8 +36,6 @@ class PedidoModel extends Model
         on m.fk_marca = mc.id_marca 
         inner join categorias c
         on m.fk_categoria = c.id_categoria 
-        inner join cliente cli
-        on l.fk_projeto = cli.id_cliente
         inner join usuario us
         on l.fk_usuario = us.id_usuario order by l.datalog desc");
 
@@ -45,7 +43,7 @@ class PedidoModel extends Model
     }
 
     public function getSaidaMes($mes){
-        $query = $this->db->query("SELECT l.qtd, l.preco,cli.nome_cliente, m.nome_material,f.nome_fornecedor, mc.nome_marca, c.nome_categoria, date_format(l.datalog, '%d/%m/%Y') as dataS, us.nivel, l.fk_usuario from logg l
+        $query = $this->db->query("SELECT l.qtd, l.preco,l.projeto, m.nome_material,f.nome_fornecedor, mc.nome_marca, c.nome_categoria, date_format(l.datalog, '%d/%m/%Y') as dataS, us.nivel, l.fk_usuario from logg l
         inner join materiais m 
         on l.fk_material = m.id_material
         inner join fornecedores f 
@@ -54,8 +52,6 @@ class PedidoModel extends Model
         on m.fk_marca = mc.id_marca 
         inner join categorias c
         on m.fk_categoria = c.id_categoria 
-        inner join cliente cli
-        on l.fk_projeto = cli.id_cliente
         inner join usuario us
         on l.fk_usuario = us.id_usuario where l.datalog like '$mes%' order by l.datalog desc");
 

@@ -47,7 +47,7 @@ display: block;
             <th scope="row"><?= $material["qtd"]?></th>
             <td><?= $material["nome_material"]?></td>
             <td><?= $material["preco"]?></td>
-            <td><?= $material["nome_cliente"]?></td>
+            <td><?= $material["projeto"]?></td>
             <td><?= $material["nome_fornecedor"]?></td>
             <td><?= $material["nome_marca"]?></td>
             <td><?= $material["nome_categoria"]?></td>
@@ -81,7 +81,7 @@ display: block;
             <th scope="row">${m.qtd}</th>
             <td>${m.nome_material}</td>
             <td>${m.preco}</td>
-            <td>${m.nome_cliente}</td>
+            <td>${m.projeto}</td>
             <td>${m.nome_fornecedor}</td>
             <td>${m.nome_marca}</td>
             <td>${m.nome_categoria}</td>

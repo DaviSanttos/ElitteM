@@ -10,5 +10,5 @@ class LoggModel extends Model
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
 
-    protected $allowedFields    = ['qtd','preco','fk_pedido','fk_material','fk_projeto', 'fk_usuario'];
+    protected $allowedFields    = ['qtd','preco','fk_pedido','fk_material','projeto', 'fk_usuario'];
 }
