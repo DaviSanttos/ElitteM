@@ -106,7 +106,7 @@
                 </div>
                 <div class="modal-body">
                   Deseja remover a o material
-                  <?= $item["nome_material"] ?> ?
+                  <?= esc($item["nome_material"]); ?> ?
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Voltar</button>
@@ -135,12 +135,12 @@
                   <div class="mb-3">
                     <label for="recipient-name" class="col-form-label">Nome:</label>
                     <input type="text" class="form-control" id="recipient-name" name="nome_material"
-                      value="<?= $item["nome_material"] ?>">
+                      value="<?= esc($item["nome_material"]); ?>">
                   </div>
                   <div class="mb-3">
                     <label for="recipient-name" class="col-form-label">Preço:</label>
                     <input type="text" class="form-control" id="recipient-name" name="preco"
-                      value="<?= $item["preco"] ?>">
+                      value="<?= esc($item["preco"]) ?>">
                   </div>
                 </div>
                 <div class="modal-footer">
@@ -157,7 +157,7 @@
           <?= esc($item["nome_material"]) ?>
         </td>
         <td>
-          <?= $item["preco"] ?>
+          <?= esc($item["preco"]) ?>
         </td>
         <td>
           <?= $item["nome_fornecedor"] ?>

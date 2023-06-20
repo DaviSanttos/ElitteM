@@ -26,21 +26,7 @@ class PedidoModel extends Model
         return $results = $query->getResultArray();
     }
 
-    public function getSaida(){
-        $query = $this->db->query("SELECT l.qtd, l.preco,l.projeto, m.nome_material,f.nome_fornecedor, mc.nome_marca, c.nome_categoria, date_format(l.datalog, '%d/%m/%Y') as dataS, us.nivel, l.fk_usuario from logg l
-        inner join materiais m 
-        on l.fk_material = m.id_material
-        inner join fornecedores f 
-        on m.fk_fornecedor = f.id_fornecedor 
-        inner join marcas mc 
-        on m.fk_marca = mc.id_marca 
-        inner join categorias c
-        on m.fk_categoria = c.id_categoria 
-        inner join usuario us
-        on l.fk_usuario = us.id_usuario order by l.datalog desc");
 
-        return $results = $query->getResultArray();
-    }
 
     public function getSaidaMes($mes){
         $query = $this->db->query("SELECT l.qtd, l.preco,l.projeto, m.nome_material,f.nome_fornecedor, mc.nome_marca, c.nome_categoria, date_format(l.datalog, '%d/%m/%Y') as dataS, us.nivel, l.fk_usuario from logg l

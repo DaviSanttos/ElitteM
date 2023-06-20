@@ -62,7 +62,7 @@ display: block;
         <?php endforeach; ?>
     </tbody>
 </table>
-            <!-- </div> -->
+<?= $paginas ?>
 <script>
     const W = document.getElementById("weekId");
     const M = document.getElementById("monthId");

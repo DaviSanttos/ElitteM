@@ -18,14 +18,11 @@ class PaginaAdmin extends BaseController
     }
     public function controle()
     {
-        $pedidoModel = new PedidoModel;
-        $dados['materiaisS'] = $pedidoModel->getSaida();
+        $loggModel = new LoggModel();
+        $dados['materiaisS'] = $loggModel->getSaida(15);
+        $dados["paginas"] = $loggModel->pager->links('default', 'bootstrap');
         return view('controle',$dados);
     }
-    // public function materiais()
-    // {
-    //     return view('materiais');
-    // }
     public function listaProjetos()
     {
         $projetoModel = new ProjetoModel();
