@@ -39,12 +39,6 @@ class PaginaAdmin extends BaseController
         $dados['materiais_pedido'] = $pedidoModel->getMateriais($id);
         return view('projeto',$dados);
     }
-    // public function graficos()
-    // {
-    //     $pedidoModel = new PedidoModel();
-    //     $results["valores"] = $pedidoModel->getCategoriaPreco();
-    //     return $results;
-    // }
 
       public function SaidaMes($mes)
     {

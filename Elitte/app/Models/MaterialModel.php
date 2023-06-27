@@ -10,7 +10,7 @@ class MaterialModel extends Model
     protected $primaryKey       = 'id_material';
     protected $useAutoIncrement = true;
 
-    protected $allowedFields = ["nome_material", "qtd_materia", "preco", "fk_fornecedor", "fk_categoria", "fk_marca", "fk_loc"];
+    protected $allowedFields = ["nome_material", "qtd_materia", "preco", "fk_fornecedor", "fk_categoria", "fk_marca"];
 
 
     public function getMateriais($filtro = ""){

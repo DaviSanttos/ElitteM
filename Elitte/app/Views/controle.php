@@ -13,18 +13,10 @@
 
 }
 
-/* .my-custom-scrollbar {
-position: relative;
-height: 80vh;
-overflow: auto;
-}
-.table-wrapper-scroll-y {
-display: block;
-} */
 </style>
 <div class="d-flex flex-row-reverse justify-content-between container">
     <button class= "btn btn-success mt-1 p-2 mt-2 mb-2 button" onclick="window.print()" id="button">Imprimir / Salvar PDF</button>  
-    <input class="btn btn-secondary mt-1 p-2 mt-2 mb-2 button" type="week" id="weekId">
+    <!-- <input class="btn btn-secondary mt-1 p-2 mt-2 mb-2 button" type="week" id="weekId"> -->
     <input class="btn btn-secondary mt-1 p-2 mt-2 mb-2 button" type="month" id="monthId">
 </div>
 <!-- <div class="table-wrapper-scroll-y my-custom-scrollbar"> -->
@@ -64,12 +56,10 @@ display: block;
 </table>
 <?= $paginas ?>
 <script>
-    const W = document.getElementById("weekId");
+    // const W = document.getElementById("weekId");
     const M = document.getElementById("monthId");
     const T = document.getElementById("myTable");
-    W.addEventListener("change", (event) => {
-        console.log(W.value);
-    });
+
     M.addEventListener("change", async (event) => {
         dados = await fetch(`http://localhost:8080/saidaMes/${M.value}`);
         const obj = await dados.json();

@@ -16,12 +16,13 @@
             background-size: cover;
             width: 100vw;
             height: 100vh;
+            overflow: hidden;
         }
 
         .container {
             background-color: rgba(0, 0, 0, 0.5);
             width: 35rem;
-            height: 20rem;
+            height: 16rem;
             border-radius: 10px;
         }
 
@@ -34,7 +35,6 @@
 
 <body>
     <div>
-       <?php  echo password_hash("1234", PASSWORD_DEFAULT) ?>
         <div class="form-group d-flex justify-content-center pt-5" id="svg">
             <img src="../img/bonequin.svg" width="200" height="200">
         </div>

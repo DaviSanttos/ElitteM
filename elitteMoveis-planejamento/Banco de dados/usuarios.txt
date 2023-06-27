@@ -1,0 +1,7 @@
+nome : adm 
+senha : 1234
+
+------------
+
+nome : user 
+senha : 1234
